@@ -1,0 +1,42 @@
+# Docs: https://confluence.carfax.net/display/PLATFORM/carfax-properties.yaml+file+specification
+
+# (Optional) The name of the resource, in case it differs from the name of the source code repository
+# If not specified, the name of the project will be used.
+name: __PROJECT_NAME__
+
+# The name of the team responsible for the resource
+team: __TEAM_NAME__
+ 
+# The application associated with the resource
+# If the resource is associated with multiple applications, they can be specified as the 'applications' list instead of a string value
+application: gitlab-sync
+ 
+# # Application list example:
+# applications:
+# - app name 1
+# - app name 2
+ 
+# (Optional) The feature the source code repository provides
+# If not specified, "source code repository" will be used.
+# Examples: argocd charts repository, ETL data source, configuration store
+feature: source code repository
+ 
+# Whether the application represented by the repository has public facing (ex: available on the Internet) components or not.
+public-facing: false
+ 
+# (Optional) What compliance framework should apply to the resource.
+# Examples: None, PCI, SOX
+# If not specified, None will be used
+compliance: None
+ 
+# The slack channel that should be used to inquire about the resource
+slack-channel: __SLACK_CHANEL__
+ 
+# An email address that should be used to inquire about the resource
+email: __TEAM_EMAIL__
+ 
+# (Optional) A list of locations where the code within the source repository runs.
+# example values include: GitLab CI, AWS, DC2, MO-Batch, CARFAX Workstations
+# If not specified, it will be assumed the code within the repository does not run anywhere.
+runs-in:
+- GitLab CI

@@ -1,0 +1,10 @@
+/*
+  SCSS in this file will be prepended to EVERY component
+  It is recommended that only variables and mixes be added here.
+*/
+
+// Stencils Variables
+@import "~node_modules/@carfax-stencils/styles/src/vars.scss";
+
+// App Variables
+@import "variables.scss";

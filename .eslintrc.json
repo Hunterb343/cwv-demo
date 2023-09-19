@@ -1,0 +1,25 @@
+{
+  "env": {
+    "jest/globals": true
+  },
+  "extends": ["plugin:jsx-a11y/recommended", "plugin:react-hooks/recommended"],
+  "ignorePatterns": [".gitignore", "**/lib/**", "**/*.js"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "plugins": ["@typescript-eslint", "eslint-plugin-jsx-a11y", "prettier", "jest", "jsx-a11y"],
+  "rules": {
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "no-nested-ternary": "error",
+    "prettier/prettier": "warn",
+    "react/jsx-uses-react": "off",
+    "react/no-deprecated": "off",
+    "react/react-in-jsx-scope": "off"
+  }
+}

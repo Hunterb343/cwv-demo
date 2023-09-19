@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [ "./src/components/*" ],
+      "@contexts/*": [ "./src/contexts/*" ],
+      "@env/*": [ "./src/env/*" ],
+      "@images/*": [ "./src/images/*" ],
+      "@testingTools/*": [ "./src/testingTools/*" ],
+      "@types": [ "./src/types/index.d.ts" ],
+      "@utils/*": [ "./src/utils/*" ]
+    }
+  },
+  "include": [
+    /*tmpl staticImageLoader*/
+    "next-env.override.d.ts",
+    /*tmpl*/
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
