@@ -49,9 +49,13 @@ export const Resources: FC = () => {
         <SpinnerFox />
       ) : (
         thronesSrc.map((character) => (
-          <Card className="GoT" key={character.id} padding={24}>
+          <Card className={styles.GoT} key={character.id} padding={24}>
             <img src={character.imageUrl} alt="game of thrones" />
-            <div>{character.fullName}</div>
+            <div>
+              <h4>{character.fullName}</h4>
+              <p>{character.title}</p>
+              <p>{character.family}</p>
+            </div>
           </Card>
         ))
       )}
@@ -59,4 +63,6 @@ export const Resources: FC = () => {
   )
 }
 
+//leverage flex box (test in elements)
+//vertical & horizontal alignment
 export default Resources
