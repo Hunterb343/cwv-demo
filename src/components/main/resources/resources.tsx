@@ -5,29 +5,6 @@ import { SpinnerFox } from "@carfax-stencils/spinner"
 import axios from "axios"
 import Card from "@carfax-stencils/card"
 
-const LINKS = [
-  {
-    title: "Stencils",
-    href: "https://stencils-webserver.s3.amazonaws.com/documentation",
-  },
-  {
-    title: "Other FE Components",
-    href: "https://cfx-cxd-stencils-docs-webserver-production-us-east-1.s3.amazonaws.com/carfax-frontend/index.html",
-  },
-  {
-    title: "React",
-    href: "https://react.dev/learn",
-  },
-  {
-    title: "NextJs",
-    href: "https://nextjs.org/docs",
-  },
-  {
-    title: "useStateValidate",
-    href: "https://tkil.gitlab.io/use-state-validate/",
-  },
-]
-
 export const Resources: FC = () => {
   const [thronesSrc, setThronesSrc] = useState<any[]>([])
 
