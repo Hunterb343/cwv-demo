@@ -29,6 +29,20 @@ export default function Document() {
       <Head>
         {headerCoreAssetPreload}
         {/* ANALYTIC / MARKETING SCRIPTS GO HERE */}
+        <script src="https://accounts.google.com/gsi/client"></script>
+
+        <script
+          src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+          type="text/javascript"
+          data-domain-script="0d69d08b-8ee3-4551-ae64-1bbf1bc57831"
+        ></script>
+
+        <script
+          src="https://code.jquery.com/jquery-3.7.1.js"
+          integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+          crossOrigin="anonymous"
+        ></script>
+
         {headerAuthDeferredJs}
         {headerCoreDeferredCss}
         {headerCoreDeferredJs}
