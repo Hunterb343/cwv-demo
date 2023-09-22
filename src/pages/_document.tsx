@@ -27,9 +27,9 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="prefetch" fetchpriority="high" href="https://thronesapi.com/assets/images/daenerys.jpg" />
+        {/* <link rel="prefetch" fetchpriority="high" href="https://thronesapi.com/assets/images/daenerys.jpg" />
         <link rel="preconnect" href="https://thronesapi.com" />
-        <link rel="preconnect" href="https://api.thecatapi.com" />
+        <link rel="preconnect" href="https://api.thecatapi.com" /> */}
         {headerCoreAssetPreload}
         <script src="https://accounts.google.com/gsi/client" defer></script>
 
