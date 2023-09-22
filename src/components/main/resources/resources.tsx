@@ -80,7 +80,12 @@ export const Resources: FC = () => {
       ) : (
         thronesSRC.map((character, charIndex) => (
           <Card className={styles.GoT} key={character.id} padding={24}>
-            <img src={character.imageUrl} alt="game of thrones" />
+            <img
+              src={character.imageUrl}
+              alt="game of thrones"
+              loading={charIndex === 0 ? "eager" : "lazy"}
+              fetchpriority={charIndex === 0 ? "high" : "low"}
+            />
             <div>
               <h4>{character.fullName}</h4>
               <p>{character.title}</p>
