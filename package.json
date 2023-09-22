@@ -25,6 +25,7 @@
     "@carfax-stencils/button": "^9.0.2",
     "@carfax-stencils/card": "^2.1.1",
     "@carfax-stencils/input-text": "^12.2.1",
+    "@carfax-stencils/modal": "^11.3.1",
     "@carfax-stencils/spinner": "^8.2.1",
     "@carfax-stencils/styles": "^6.0.1",
     "axios": "^1.5.0",

@@ -1,6 +1,8 @@
 @import "./stencils.scss";
 @import "./variables.scss";
 @import "@carfax-stencils/card/src/index.scss";
+@import "@carfax-stencils/styles/src/overlay.scss";
+@import "@carfax-stencils/modal/src/index.scss";
 
 .cfx-card_body {
   display: flex;
