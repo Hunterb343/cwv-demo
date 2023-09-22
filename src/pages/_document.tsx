@@ -27,20 +27,24 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <link rel="prefetch" fetchpriority="high" href="https://thronesapi.com/assets/images/daenerys.jpg" />
+        <link rel="preconnect" href="https://thronesapi.com" />
+        <link rel="preconnect" href="https://api.thecatapi.com" />
         {headerCoreAssetPreload}
-        {/* ANALYTIC / MARKETING SCRIPTS GO HERE */}
-        <script src="https://accounts.google.com/gsi/client"></script>
+        <script src="https://accounts.google.com/gsi/client" defer></script>
 
         <script
           src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
           type="text/javascript"
           data-domain-script="0d69d08b-8ee3-4551-ae64-1bbf1bc57831"
+          defer
         ></script>
 
         <script
           src="https://code.jquery.com/jquery-3.7.1.js"
           integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
           crossOrigin="anonymous"
+          defer
         ></script>
 
         {/*<link rel="preconnect" href="https://fonts.googleapis.com" />*/}

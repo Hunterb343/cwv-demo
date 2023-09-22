@@ -1,4 +1,5 @@
 import axios from "axios"
+
 export const getCatByTemperament = (name, cats) => {
   switch (name) {
     case name.includes("Stark"):
