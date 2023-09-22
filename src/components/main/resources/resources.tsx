@@ -79,9 +79,14 @@ export const Resources: FC = () => {
         <SpinnerFox />
       ) : (
         thronesSRC.map((character, charIndex) => (
-          <Card className={styles.GoT_Image} key={character.id} padding={24}>
-            <img src={character.imageUrl} width="225" height="225" alt="game of thrones" />
-            <div className={styles.GoT_Text}>
+          <Card key={character.id} padding={24}>
+            {" "}
+            {/* className={styles.GoT_Image} */}
+            <img src={character.imageUrl} alt="game of thrones" />
+            {/*<img src={character.imageUrl} width="225" height="225" alt="game of thrones" /> */}
+            <div>
+              {" "}
+              {/* className={styles.GoT_Text} */}
               <h4>{character.fullName}</h4>
               <p>{character.title}</p>
               <p>{character.family}</p>
