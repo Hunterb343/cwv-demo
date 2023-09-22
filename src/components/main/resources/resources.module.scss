@@ -6,8 +6,17 @@
   padding: 24px 24px;
   background-color: $grey-light;
 
-  .GoT {
+  .GoT_Image {
     margin: 20px;
+    font-family: "Open Sans", Arial;
+    font-display: block;
+  }
+
+  .GoT_Text {
+    //if i switch width & height to numbers, I get a tiny manageable layout shift
+    width: 100%;
+    height: auto;
+    text-align: center;
   }
 
   a {
