@@ -3,29 +3,82 @@ import { FC, useEffect, useState } from "react"
 import styles from "./resources.module.scss"
 import { SpinnerFox } from "@carfax-stencils/spinner"
 import axios from "axios"
+import Button from "@carfax-stencils/button"
 import Card from "@carfax-stencils/card"
+import { Modal, ModalHeader, ModalBody } from "@carfax-stencils/modal"
+import { getCatByTemperament, fireMarketingAndAnalytics } from "../../../utils/utils"
 
 export const Resources: FC = () => {
-  const [thronesSrc, setThronesSrc] = useState<any[]>([])
+  const [thronesSRC, setThronesSRC] = useState<any[]>([])
+  const [cats, setCats] = useState(null)
+  const [visible, setVisible] = useState(false)
+  const [activeCharacter, setActiveCharacter] = useState({
+    fullName: "Cat",
+    family: "Targaryen",
+  })
+  const [characterCatSRC, setCharacterCatSRC] = useState(null)
+
+  const getThronesImages = async () => {
+    try {
+      const response = await axios.get("https://thronesapi.com/api/v2/Characters")
+      setThronesSRC(response.data)
+      setActiveCharacter(response.data[0])
+      return response.data
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const getCats = async () => {
+    try {
+      const response = await axios.get("https://api.thecatapi.com/v1/breeds", {
+        headers: {
+          "x-api-key": "live_vAap842HjOzn76VXxrYLgWhieOfAGSTfSHE2vLoMEdmkUXzzNvklLKHKRbp48uSp",
+        },
+      })
+      const tempList = response.data.map((cat: { id: any; temperament: any }) => ({
+        id: cat.id,
+        temperament: cat.temperament,
+      }))
+
+      setCats(tempList)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const getCharacterCat = async (character: { family: any }) => {
+    const characterCat = getCatByTemperament(character.family, cats)
+
+    try {
+      const response = await axios.get(`https://api.thecatapi.com/v1/images/search?breed_ids=${characterCat.id}`, {
+        headers: {
+          "x-api-key": "live_vAap842HjOzn76VXxrYLgWhieOfAGSTfSHE2vLoMEdmkUXzzNvklLKHKRbp48uSp",
+        },
+      })
+
+      setCharacterCatSRC(response.data[0].url)
+    } catch (error) {
+      console.error(error)
+    }
+    return
+  }
+
+  const getThronesCats = async () => {
+    await getThronesImages()
+    await getCats()
+  }
 
   useEffect(() => {
-    axios
-      .get("https://thronesapi.com/api/v2/Characters")
-      .then((response) => {
-        setThronesSrc(response.data)
-        console.log(response.data)
-      })
-      .catch((error) => {
-        console.error(error)
-      })
+    getThronesCats()
   }, [])
 
   return (
     <div className={styles.root}>
-      {thronesSrc.length === 0 ? (
+      {thronesSRC.length === 0 ? (
         <SpinnerFox />
       ) : (
-        thronesSrc.map((character) => (
+        thronesSRC.map((character, charIndex) => (
           <Card className={styles.GoT_Image} key={character.id} padding={24}>
             <img src={character.imageUrl} width="225" height="225" alt="game of thrones" />
             <div className={styles.GoT_Text}>
@@ -33,13 +86,35 @@ export const Resources: FC = () => {
               <p>{character.title}</p>
               <p>{character.family}</p>
             </div>
+            <Button
+              onClick={async () => {
+                await fireMarketingAndAnalytics(cats)
+                setVisible(true)
+                setActiveCharacter(character)
+                getCharacterCat(character)
+              }}
+              theme="blue"
+            >
+              Find my Cat!
+            </Button>
           </Card>
         ))
       )}
+
+      <Modal
+        isVisible={visible}
+        onClose={() => {
+          setVisible(false)
+          setCharacterCatSRC(null)
+        }}
+      >
+        <ModalHeader>{activeCharacter.fullName}</ModalHeader>
+        <ModalBody>
+          <div>{characterCatSRC ? <img src={characterCatSRC} alt="characters matching cat" /> : <span />}</div>
+        </ModalBody>
+      </Modal>
     </div>
   )
 }
 
-//leverage flex box (test in elements)
-//vertical & horizontal alignment
 export default Resources
