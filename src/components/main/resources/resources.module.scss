@@ -8,6 +8,10 @@
 
   .GoT {
     margin: 20px;
+
+    div {
+      margin-bottom: 20px;
+    }
   }
 
   a {
@@ -20,7 +24,7 @@
   }
 
   @media screen and (min-width: 800px) {
-    flex-direction: row;
+    // flex-direction: row;
 
     a {
       min-width: auto;
