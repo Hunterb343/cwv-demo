@@ -6,19 +6,40 @@
   padding: 24px 24px;
   background-color: $grey-light;
 
-  .GoT_Image {
+  .GoT_Card {
     margin: 20px;
-    //font-family: "Open Sans", Arial;
-    //font-display: block;
-    //font-display: optional;
+    font-display: swap;
+    font-family: "Open Sans", Arial;
+    //font-family: "Open Sans", Times;
   }
 
-  // .GoT_Text {
-  //   //if i switch width & height to numbers, I get a tiny manageable layout shift
-  //   width: 100%;
-  //   height: auto;
-  //   text-align: center;
-  // }
+  //To Set fallback font closer to web font:
+  @font-face {
+    font-family: Arial;
+    src: local(Arial);
+    size-adjust: 106%;
+    //ascent-override: 100%; //EXPERIMENTAL
+    //descent-override: 100%; //EXPERIMENTAL
+    //line-gap-override: 125%; //EXPERIMENTAL
+  }
+
+  //To Perform high performance animations:
+  .animate {
+    animation: rotate 0.7s ease-in-out both;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .GoT_Text {
+    text-align: center;
+  }
 
   a {
     min-width: 280px;

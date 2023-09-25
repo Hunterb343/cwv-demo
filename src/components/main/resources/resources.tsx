@@ -17,6 +17,8 @@ export const Resources: FC = () => {
     family: "Targaryen",
   })
   const [characterCatSRC, setCharacterCatSRC] = useState(null)
+  const [buttonID, setButtonID] = useState("")
+  const [toggle, setToggle] = useState(false)
 
   const getThronesImages = async () => {
     try {
@@ -69,6 +71,26 @@ export const Resources: FC = () => {
     await getCats()
   }
 
+  const spin = () => {
+    if (!buttonID) {
+      return
+    }
+    var element = document.getElementById(buttonID)
+    element!.classList.toggle(styles.animate)
+    element!.addEventListener("animationend", animationEndCallback)
+  }
+
+  const animationEndCallback = () => {
+    var element = document.getElementById(buttonID)
+    element!.removeEventListener("animationend", animationEndCallback)
+    element!.classList.remove(styles.animate)
+  }
+
+  useEffect(() => {
+    spin()
+    setButtonID("")
+  }, [toggle])
+
   useEffect(() => {
     getThronesCats()
   }, [])
@@ -79,18 +101,18 @@ export const Resources: FC = () => {
         <SpinnerFox />
       ) : (
         thronesSRC.map((character, charIndex) => (
-          <Card className={styles.GoT_Image} key={character.id} padding={24}>
+          <Card className={styles.GoT_Card} key={character.id} padding={24}>
             <img
+              id={character.fullName}
               src={character.imageUrl}
               alt="game of thrones"
-              //loading={charIndex === 0 ? "eager" : "lazy"}
+              loading={charIndex === 0 ? "eager" : "lazy"}
               //fetchpriority={charIndex === 0 ? "high" : "low"}
-              //width="225" 
-              //height="225"
+              // width="225"
+              // height="225"
             />
-            <div>
-              {/* className={styles.GoT_Text} */}
-              <h4>{character.fullName}</h4>
+            <div className={styles.GoT_Text}>
+              <h4>{character.firstName}</h4>
               <p>{character.title}</p>
               <p>{character.family}</p>
             </div>
@@ -104,6 +126,19 @@ export const Resources: FC = () => {
               theme="blue"
             >
               Find my Cat!
+            </Button>
+            <Button
+              onClick={() => {
+                setButtonID(character.fullName)
+                if (toggle) {
+                  setToggle(false)
+                } else {
+                  setToggle(true)
+                }
+              }}
+              theme="blue"
+            >
+              Spin!
             </Button>
           </Card>
         ))
